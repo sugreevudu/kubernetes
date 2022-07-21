@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ramtomcat-ser
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+    nodePort: 32000
+  selector:
+    app: ramtomcat-dep
+  type: NodePort
