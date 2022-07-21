@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ramtomcat-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ramtomcat-dep
+  template:
+    metadata:
+      labels:
+        app: ramtomcat-dep
+    spec:
+      containers:
+      - name: ramtomcat-dep
+        image: ram123/ramtomcat
+        ports:
+        - containerPort: 8080
