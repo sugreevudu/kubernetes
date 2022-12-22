@@ -11,6 +11,6 @@ spec:
      # app: nginx-ram
    type: NodePort
    ports:
-   - nodePort: 32000
+   - nodePort: 32002
      port: 80
      targetPort: 80
