@@ -8,20 +8,24 @@ pipeline {
 
         stages {
 
-            stage('create deployment') {
+            stage('git checkout') {
 	
                 steps {
 
-	            dir('/root/argocd-apps'){
-							       sh 'kubectl apply -f argo-project1.yaml'
- 			                   }
+	            checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/sugreevudu/kubernetes.git']]])			                   }
 							                           }
 								        }
 								          
-  stage('show deployments') {
+  stage('mysql deployment') {
 							       steps {
-								                    sh 'kubectl get deployments -n ramnginx'
-			         
+								                    sh 'kubectl create -f mysql-user-pass.yaml'
+
+	            sh 'kubectl create -f mysql-db-url.yaml'
+                    sh 'kubectl create -f mysql-root-pass.yaml'
+                    sh 'kubectl create -f mysql-pv.yaml'
+                    sh 'kubectl create -f mysql-pvc.yaml'
+                    sh 'kubectl create -f mysql-deployment.yaml'
+                    sh 'kubectl create -f mysql-service.yaml'		         
 	     }
 									         }
 									    }
