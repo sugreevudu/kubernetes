@@ -27,5 +27,11 @@ pipeline {
                 sh 'kubectl create -f wordpre-phpmysql-mysql-deployments/mysql-service.yaml'		         
 	                 }
 			    }
+          stage('php-myadmin-deployment') {
+			     steps {
+			          sh 'kubectl create -f wordpre-phpmysql-mysql-deployments/phpmyadmin-deploy.yaml';
+	              sh 'kubectl create -f wordpre-phpmysql-mysql-deployments/phpmyadmin-service.yaml'         
+	                 }
+			    }
           }
 	}
