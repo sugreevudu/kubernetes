@@ -33,5 +33,11 @@ pipeline {
 	              kubectl apply -f wordpre-phpmysql-mysql-deployments/phpmyadmin-service.yaml'''         
 	                 }
 			    }
+          stage('wordpress-deployment') {
+			     steps {
+			          sh '''kubectl apply -f wordpre-phpmysql-mysql-deployments/wordpress-deploy.yaml
+	              kubectl apply -f wordpre-phpmysql-mysql-deployments/wordpress-service.yaml'''         
+	                 }
+			    }
           }
 	}
