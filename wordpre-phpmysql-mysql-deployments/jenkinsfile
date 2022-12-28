@@ -1,0 +1,29 @@
+pipeline {
+    
+    agent {
+            
+       label 'kubernetes'
+	        
+          }
+
+        stages {
+
+            stage('create deployment') {
+	
+                steps {
+
+	            dir('/root/argocd-apps'){
+							       sh 'kubectl apply -f argo-project1.yaml'
+ 			                   }
+							                           }
+								        }
+								          
+  stage('show deployments') {
+							       steps {
+								                    sh 'kubectl get deployments -n ramnginx'
+			         
+	     }
+									         }
+									    }
+										}
+
