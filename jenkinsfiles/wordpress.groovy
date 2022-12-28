@@ -18,19 +18,19 @@ pipeline {
 								          
             stage('mysql deployment') {
 			  steps {
-			    sh 'kubectl create -f wordpre-phpmysql-mysql-deployments/mysql-user-pass.yaml';
-	            sh 'kubectl create -f wordpre-phpmysql-mysql-deployments/mysql-db-url.yaml';
-                sh 'kubectl create -f wordpre-phpmysql-mysql-deployments/mysql-root-pass.yaml';
-                sh 'kubectl create -f wordpre-phpmysql-mysql-deployments/mysql-pv.yaml';
-                sh 'kubectl create -f wordpre-phpmysql-mysql-deployments/mysql-pvc.yaml';
-                sh 'kubectl create -f wordpre-phpmysql-mysql-deployments/mysql-deployment.yaml';
-                sh 'kubectl create -f wordpre-phpmysql-mysql-deployments/mysql-service.yaml'		         
+			    sh '''kubectl apply -f wordpre-phpmysql-mysql-deployments/mysql-user-pass.yaml
+	              kubectl apply -f wordpre-phpmysql-mysql-deployments/mysql-db-url.yaml
+                kubectl apply -f wordpre-phpmysql-mysql-deployments/mysql-root-pass.yaml
+                kubectl apply -f wordpre-phpmysql-mysql-deployments/mysql-pv.yaml
+                kubectl apply -f wordpre-phpmysql-mysql-deployments/mysql-pvc.yaml
+                kubectl apply -f wordpre-phpmysql-mysql-deployments/mysql-deployment.yaml
+                kubectl apply -f wordpre-phpmysql-mysql-deployments/mysql-service.yaml'''		         
 	                 }
 			    }
           stage('php-myadmin-deployment') {
 			     steps {
-			          sh 'kubectl create -f wordpre-phpmysql-mysql-deployments/phpmyadmin-deploy.yaml';
-	              sh 'kubectl create -f wordpre-phpmysql-mysql-deployments/phpmyadmin-service.yaml'         
+			          sh '''kubectl apply -f wordpre-phpmysql-mysql-deployments/phpmyadmin-deploy.yaml
+	              kubectl apply -f wordpre-phpmysql-mysql-deployments/phpmyadmin-service.yaml'''         
 	                 }
 			    }
           }
