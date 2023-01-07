@@ -29,4 +29,4 @@ spec:
             gitRepo:
               repository: https://github.com/sugreevudu/kubernetes.git
               revision: master
-              directory: ./kubedir/indexfile            
+              directory: "kubedir/indexfile/."            
