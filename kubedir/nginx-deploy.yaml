@@ -18,5 +18,15 @@ spec:
           containers:
           - name: nginx-container
             image: nginx
+            volumeMounts:
+            - name: html
+              mountPath: /usr/share/nginx/html
+              readOnly: true
             ports:
             - containerPort: 80
+          volumes:
+          - name: html
+            gitRepo:
+            repository: https://github.com/sugreevudu/kubernetes.git
+            revision: master
+            directory: kubedir/indexfile            
