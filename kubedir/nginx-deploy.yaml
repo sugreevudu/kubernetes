@@ -27,6 +27,6 @@ spec:
           volumes:
           - name: html
             gitRepo:
-            repository: https://github.com/sugreevudu/kubernetes.git
-            revision: master
-            directory: .            
+              repository: https://github.com/sugreevudu/kubernetes.git
+              revision: master
+              directory: kubedir/indexfile/.            
