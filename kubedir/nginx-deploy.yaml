@@ -6,7 +6,7 @@ metadata:
       labels:
           app: nginx-app
 spec:
-    replicas: 3
+    replicas: 2
     selector:
        matchLabels:
             app: nginx-app
@@ -29,4 +29,4 @@ spec:
             gitRepo:
               repository: https://github.com/sugreevudu/kubernetes.git
               revision: master
-              directory: kubedir/indexfile/.            
+              directory: .            
