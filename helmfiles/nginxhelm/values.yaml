@@ -1,0 +1,11 @@
+replicaCount: 1
+
+image:
+  repository: nginx
+  tag: "harshanginx"
+
+serv:
+  name: harshasvc
+  type: NodePort
+  port: 80
+  nodeport: 30009

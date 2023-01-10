@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+   name: {{.Values.serv.name}}
+   labels:
+      app: {{.Values.image.tag}}
+spec:
+   selector:
+      app: {{.Values.image.tag}}
+   type: {{.Values.serv.type}}
+   ports:
+   - nodePort: {{.Values.serv.nodeport}}
+     port: {{.Values.serv.port}}
+     targetPort: {{.Values.serv.port}}
