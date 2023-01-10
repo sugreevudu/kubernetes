@@ -1,6 +1,6 @@
 replicaCount: 1
 
-sssss:
+image:
   repository: nginx
   tag: "ramnginx"
 
@@ -9,3 +9,4 @@ serv:
   type: NodePort
   port: 80
   nodeport: 30006
+
