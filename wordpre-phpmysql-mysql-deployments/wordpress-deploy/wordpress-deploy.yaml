@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+  labels:
+    name: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      containers:
+      - name: wordpress
+        image: wordpress 
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: mysql.default:3306
+        - name: WORDPRESS_DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: mysql-db-url
+              key: database
+        - name: WORDPRESS_DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysql-user-pass
+              key: username
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-user-pass
+              key: password
+        - name: WORDPRESS_AUTH_KEY
+          value: SECURE_AUTH_KEY
+        - name: WORDPRESS_LOGGED_IN_KEY
+          value: SECURE_LOGGED_IN_KEY
+        - name: WORDPRESS_AUTH_SALT
+          value: SECURE_AUTH_SALT
+        - name: WORDPRESS_LOGGED_IN_SALT
+          value: SECURE_LOGGED_IN_SALT
+        ports:
+        - containerPort: 80
+          name: phpmyadmin
+
